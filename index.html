@@ -167,13 +167,11 @@
       grid-template-columns: 1fr 1fr;
       position: relative;
       overflow: hidden;
+      background: #111111;
     }
 
     #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 70% 50%, #1a1a1a 0%, var(--black) 100%);
+      display: none;
     }
 
     .hero-left {
@@ -188,26 +186,12 @@
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      border: 1px solid var(--gray-line);
-      padding: 8px 18px;
       width: fit-content;
       margin-bottom: 48px;
     }
 
-    .hero-badge span {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gray-text);
-    }
-
     .hero-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gray-text);
+      display: none;
     }
 
     .hero-title {
@@ -259,37 +243,25 @@
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      filter: grayscale(20%) contrast(1.05);
-      transition: transform 8s ease;
     }
 
     .hero-right:hover img {
-      transform: scale(1.03);
+      transform: none;
     }
 
     .hero-right::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 120px;
-      background: linear-gradient(to right, var(--black), transparent);
-      z-index: 1;
+      display: none;
     }
 
     .hero-right::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, var(--black) 0%, transparent 20%, transparent 80%, var(--black) 100%);
-      z-index: 1;
+      display: none;
     }
 
     .hero-scroll {
       position: absolute;
       bottom: 40px;
-      left: 80px;
+      right: 40px;
+      left: auto;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -328,7 +300,7 @@
       padding: 0;
       overflow: hidden;
       position: relative;
-      height: 340px;
+      height: 408px;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -377,18 +349,8 @@
 
     .digital-img-wrap img {
       width: 100%;
-      height: 480px;
-      object-fit: cover;
-      filter: grayscale(30%) contrast(1.1);
+      height: auto;
       display: block;
-    }
-
-    .digital-img-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid var(--gray-line);
-      pointer-events: none;
     }
 
     .digital-tags-row {
@@ -480,18 +442,25 @@
       align-items: end;
     }
 
+    .tech-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
     .tech-features {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 1px;
       background: var(--gray-line);
       border: 1px solid var(--gray-line);
-      margin-bottom: 60px;
     }
 
     .tech-feat {
       background: var(--black);
-      padding: 40px 32px;
+      padding: 32px;
       position: relative;
       overflow: hidden;
       transition: background 0.4s ease;
@@ -537,7 +506,7 @@
     .video-wrap {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%;
+      padding-bottom: 177.77%;
       overflow: hidden;
       border: 1px solid var(--gray-line);
     }
@@ -584,9 +553,9 @@
 
     .carousel-slide img {
       width: 100%;
-      height: 520px;
+      height: 720px;
       object-fit: cover;
-      object-position: center;
+      object-position: center top;
       filter: grayscale(15%);
       display: block;
     }
@@ -820,6 +789,26 @@
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
+      max-width: 700px;
+    }
+
+    .map-full {
+      margin-top: 60px;
+      border: 1px solid var(--gray-line);
+      overflow: hidden;
+      filter: grayscale(100%) contrast(0.9);
+      transition: filter 0.5s;
+    }
+
+    .map-full:hover {
+      filter: grayscale(60%) contrast(1);
+    }
+
+    .map-full iframe {
+      display: block;
+      width: 100%;
+      height: 420px;
+      border: none;
     }
 
     .contact-info-list {
@@ -914,22 +903,106 @@
       color: var(--white-pure);
     }
 
-    .map-wrap {
+
+    /* ── CONTACT CARDS ──────────────────────────────── */
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--gray-line);
       border: 1px solid var(--gray-line);
-      overflow: hidden;
-      filter: grayscale(100%) contrast(0.9);
-      transition: filter 0.5s;
+      margin-bottom: 48px;
     }
 
-    .map-wrap:hover {
-      filter: grayscale(60%) contrast(1);
+    .contact-card {
+      background: var(--black-soft);
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.35s ease;
+      cursor: pointer;
     }
 
-    .map-wrap iframe {
-      display: block;
+    .contact-card:hover {
+      background: var(--gray-dark);
+    }
+
+    .contact-card--hours {
+      cursor: default;
+    }
+
+    .contact-card-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--gray-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-card-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--gray-light);
+      color: var(--gray-light);
+    }
+
+    .contact-card-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 10px;
+    }
+
+    .contact-card-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--white-pure);
+      line-height: 1.5;
+    }
+
+    .contact-card-hours-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 10px;
       width: 100%;
-      height: 340px;
-      border: none;
+    }
+
+    .contact-card-hours-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card-day {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-text);
+    }
+
+    .contact-card-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--white-pure);
+    }
+
+    .contact-card-closed {
+      color: var(--gray-text);
+    }
+
+    .contact-cta {
+      text-align: center;
+      margin-bottom: 60px;
     }
 
     /* ── FOOTER ─────────────────────────────────────── */
@@ -1013,6 +1086,10 @@
 
     /* ── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 900px) {
+      .contact-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
       #hero {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -1031,20 +1108,18 @@
       }
 
       .hero-scroll {
-        left: 32px;
+        right: 24px;
+        left: auto;
       }
 
       .digital-grid,
       .tech-header,
+      .tech-body,
       .gallery-header,
       .exp-grid,
       .contact-grid {
         grid-template-columns: 1fr;
         gap: 48px;
-      }
-
-      .tech-features {
-        grid-template-columns: 1fr;
       }
 
       .container {
@@ -1069,6 +1144,10 @@
     }
 
     @media (max-width: 600px) {
+      .contact-cards {
+        grid-template-columns: 1fr;
+      }
+
       .hero-title {
         font-size: 32px;
       }
@@ -1105,7 +1184,7 @@
   <section id="hero">
     <div class="hero-left">
       <div class="hero-badge reveal">
-        <span>CDS Odontologia Digital · Tatuapé, SP</span>
+        <img src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-915cb5519cdf4dc962be09c91f2f7668.png" alt="CDS Odontologia Digital" style="height:40px;width:auto;object-fit:contain;">
       </div>
 
       <h1 class="hero-title reveal reveal-delay-1">
@@ -1131,14 +1210,11 @@
     </div>
 
     <div class="hero-right">
-      <img src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-90c658d66f90e7fc7fddad6e564b1fe6.png"
+      <img src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-942a7e918a3d1d7ec2241adc1e9f31f6.png"
         alt="Dr. Thel Chateaubriand">
     </div>
 
-    <div class="hero-scroll">
-      <div class="hero-scroll-line"></div>
-      <span>Explorar</span>
-    </div>
+
   </section>
 
   <!-- BEFORE/AFTER STRIP -->
@@ -1157,7 +1233,7 @@
       <div class="digital-grid">
 
         <div class="digital-img-wrap reveal">
-          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-9cbf8ecea9038adb32848b72a2ca3c09.jpg"
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-28b73f3706af545bcd329bbabe9b7fa5.png"
             alt="Protocolo All-on-4">
         </div>
 
@@ -1237,6 +1313,7 @@
         </div>
       </div>
 
+      <div class="tech-body">
       <div class="tech-features reveal">
         <div class="tech-feat">
           <div class="tech-feat-num">01</div>
@@ -1278,7 +1355,7 @@
         </div>
       </div>
 
-      <div class="reveal">
+      <div class="reveal reveal-delay-1">
         <div class="video-wrap">
           <iframe src="https://youtube.com/embed/ZDe-MHdVtGc?autoplay=0&controls=1&rel=0&modestbranding=1"
             title="CDS Odontologia — Tecnologia"
@@ -1286,6 +1363,8 @@
             allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
+
+      </div><!-- /tech-body -->
 
       <div style="text-align:center;margin-top:60px;" class="reveal">
         <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
@@ -1639,79 +1718,73 @@
         </p>
       </div>
 
-      <div class="contact-grid">
+      <!-- CONTATO: grid de cards centralizado -->
+      <div class="contact-cards reveal">
 
-        <div>
-          <div class="contact-info-list reveal">
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <svg viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <div>
-                <div class="contact-info-label">Endereço</div>
-                <div class="contact-info-value">Rua Itapura, 903 — Tatuapé, São Paulo — SP</div>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <svg viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                </svg>
-              </div>
-              <div>
-                <div class="contact-info-label">WhatsApp</div>
-                <div class="contact-info-value">
-                  <a href="https://wa.me/5511978101727" target="_blank">(11) 97810-1727</a>
-                </div>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <svg viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.776 48.776 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
-                </svg>
-              </div>
-              <div>
-                <div class="contact-info-label">Instagram</div>
-                <div class="contact-info-value">
-                  <a href="https://instagram.com/cds.odontodigital" target="_blank">@cds.odontodigital</a>
-                </div>
-              </div>
-            </div>
+        <a href="https://maps.google.com/?q=Rua+Itapura+903+Tatuapé+São+Paulo" target="_blank" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.2" fill="none">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+            </svg>
           </div>
+          <div class="contact-card-label">Endereço</div>
+          <div class="contact-card-value">Rua Itapura, 903<br>Tatuapé, São Paulo — SP</div>
+        </a>
 
-          <div class="hours-grid reveal reveal-delay-1">
-            <div class="hours-item">
-              <div class="hours-day">Segunda a Sexta</div>
-              <div class="hours-time">08:00 — 19:00</div>
-            </div>
-            <div class="hours-item">
-              <div class="hours-day">Sábado e Domingo</div>
-              <div class="hours-time">Fechado</div>
-            </div>
+        <a href="https://wa.me/5511978101727" target="_blank" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+            </svg>
           </div>
+          <div class="contact-card-label">WhatsApp</div>
+          <div class="contact-card-value">(11) 97810-1727</div>
+        </a>
 
-          <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
-            class="btn btn-filled reveal reveal-delay-2" style="width:100%;text-align:center;">
-            Agendar minha avaliação
-          </a>
-        </div>
+        <a href="https://instagram.com/cds.odontodigital" target="_blank" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="4" stroke-linecap="round"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="contact-card-label">Instagram</div>
+          <div class="contact-card-value">@cds.odontodigital</div>
+        </a>
 
-        <div class="reveal reveal-delay-1">
-          <div class="map-wrap">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.607551464515!2d-46.566013399999996!3d-23.5466136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf075e19ffe3a9%3A0x6742c1f198e557b1!2sCDS%20Odontologia%20Digital%20-%20Lente%20de%20contato%20dental%20em%20Tatuap%C3%A9%20-%20Lente%20de%20porcelana%20em%20Tatuap%C3%A9%20-%20Protocolo%20Fixo!5e0!3m2!1sen!2sbr!4v1774613470744!5m2!1sen!2sbr"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              title="CDS Odontologia - Mapa"></iframe>
+        <div class="contact-card contact-card--hours">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="contact-card-label">Horário</div>
+          <div class="contact-card-hours-row">
+            <span class="contact-card-day">Seg — Sex</span>
+            <span class="contact-card-time">08:00 — 19:00</span>
+          </div>
+          <div class="contact-card-hours-row">
+            <span class="contact-card-day">Sáb — Dom</span>
+            <span class="contact-card-time contact-card-closed">Fechado</span>
           </div>
         </div>
 
+      </div><!-- /contact-cards -->
+
+      <div class="contact-cta reveal reveal-delay-1">
+        <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
+          class="btn btn-filled">
+          Agendar minha avaliação
+        </a>
+      </div>
+
+      <div class="map-full reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.607551464515!2d-46.566013399999996!3d-23.5466136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf075e19ffe3a9%3A0x6742c1f198e557b1!2sCDS%20Odontologia%20Digital%20-%20Lente%20de%20contato%20dental%20em%20Tatuap%C3%A9%20-%20Lente%20de%20porcelana%20em%20Tatuap%C3%A9%20-%20Protocolo%20Fixo!5e0!3m2!1sen!2sbr!4v1774613470744!5m2!1sen!2sbr"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="CDS Odontologia - Mapa"></iframe>
       </div>
     </div>
   </section>
