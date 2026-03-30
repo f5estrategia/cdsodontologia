@@ -295,35 +295,48 @@
       }
     }
 
-    /* ── BEFORE AFTER STRIP ─────────────────────────── */
-    .ba-strip {
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-      height: 408px;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      filter: grayscale(10%);
-    }
-
-    .ba-strip-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, var(--black) 0%, transparent 30%, transparent 70%, var(--black) 100%);
+    /* ── BEFORE AFTER OVERLAY CARD ──────────────────── */
+    .hero-cta-row {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    .ba-label {
+    .ba-inline {
+      position: relative;
+      width: 130px;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .ba-inline img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .ba-inline-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px 10px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
       font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      letter-spacing: 8px;
+      font-size: 9px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255,255,255,0.6);
       font-weight: 300;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .ba-inline {
+        width: 100px;
+      }
     }
 
     /* ═══════════════════════════════════════════════════
@@ -431,8 +444,22 @@
      DOBRA 03 — TECNOLOGIA
   ═══════════════════════════════════════════════════ */
     #tech {
-      background: var(--black);
+      background: #ffffff;
     }
+
+    #tech .eyebrow { color: #888888; }
+    #tech .section-title { color: #1a1a1a; }
+    #tech .section-title em { color: #555555; }
+    #tech .tech-features { background: #d8d8d8; border-color: #d8d8d8; }
+    #tech .tech-feat { background: #f5f5f5; }
+    #tech .tech-feat:hover { background: #ebebeb; }
+    #tech .tech-feat-num { color: #cccccc; }
+    #tech .tech-feat-icon svg { stroke: #333333; }
+    #tech .tech-feat-name { color: #1a1a1a; }
+    #tech .tech-feat-desc { color: #666666; }
+    #tech .video-wrap { border-color: #d8d8d8; }
+    #tech .btn { border-color: #1a1a1a; color: #1a1a1a; background: transparent; }
+    #tech .btn:hover { background: #1a1a1a; color: #ffffff; }
 
     .tech-header {
       display: grid;
@@ -549,15 +576,18 @@
       min-width: 100%;
       position: relative;
       overflow: hidden;
+      aspect-ratio: 1 / 1;
     }
 
     .carousel-slide img {
       width: 100%;
-      height: 720px;
+      height: 100%;
       object-fit: cover;
       object-position: center top;
       filter: grayscale(15%);
       display: block;
+      position: absolute;
+      inset: 0;
     }
 
     .carousel-controls {
@@ -665,10 +695,28 @@
      DOBRA 06 — DEPOIMENTOS
   ═══════════════════════════════════════════════════ */
     #testimonials {
-      background: var(--black-soft);
-      border-top: 1px solid var(--gray-line);
-      border-bottom: 1px solid var(--gray-line);
+      background: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
     }
+
+    #testimonials .eyebrow { color: #888888; }
+    #testimonials .section-title { color: #1a1a1a; }
+    #testimonials .section-title em { color: #555555; }
+    #testimonials .review-slide { background: #f5f5f5; border-color: #e0e0e0; }
+    #testimonials .review-text { color: #1a1a1a; }
+    #testimonials .review-stars svg { fill: #888888; }
+    #testimonials .review-author-name { color: #555555; }
+    #testimonials .review-author-line { background: #aaaaaa; }
+    #testimonials .review-google span { color: #888888; }
+    #testimonials .carousel-btn { border-color: #cccccc; color: #1a1a1a; }
+    #testimonials .carousel-btn:hover { background: #1a1a1a; color: #ffffff; }
+    #testimonials .carousel-counter { color: #888888; }
+    #testimonials .carousel-dot { background: #cccccc; }
+    #testimonials .carousel-dot.active { background: #1a1a1a; }
+    #testimonials .google-cta { border-color: #cccccc; }
+    #testimonials .google-cta:hover { border-color: #888888; }
+    #testimonials .google-cta span { color: #555555; }
 
     .reviews-carousel-wrap {
       position: relative;
@@ -1096,11 +1144,43 @@
       }
 
       .hero-left {
-        padding: 80px 32px 60px;
+        padding: 60px 24px 40px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-title {
+        text-align: center;
+      }
+
+      .hero-sub {
+        text-align: center;
+        max-width: 100%;
+      }
+
+      .hero-tags {
+        justify-content: center;
+      }
+
+      .hero-cta-row {
+        justify-content: center;
+      }
+
+      .hero-badge {
+        justify-content: center;
       }
 
       .hero-right {
-        height: 420px;
+        width: 100%;
+        height: auto;
+      }
+
+      .hero-right img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        object-position: center top;
+        display: block;
       }
 
       .hero-right::before {
@@ -1150,6 +1230,23 @@
 
       .hero-title {
         font-size: 32px;
+        text-align: center;
+      }
+
+      .eyebrow {
+        text-align: center;
+      }
+
+      .section-title {
+        text-align: center;
+      }
+
+      .divider {
+        margin: 32px auto;
+      }
+
+      .service-list {
+        text-align: left;
       }
 
       .digital-tags-row {
@@ -1166,7 +1263,7 @@
       }
 
       .carousel-slide img {
-        height: 280px;
+        height: 100%;
       }
 
       .hours-grid {
@@ -1203,27 +1300,21 @@
         <span class="hero-tag">Fluxo Digital</span>
       </div>
 
-      <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
-        class="btn btn-filled reveal reveal-delay-3">
-        Agendar minha avaliação
-      </a>
+      <div class="hero-cta-row reveal reveal-delay-3">
+        <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
+          class="btn btn-filled">
+          Agendar minha avaliação
+        </a>
+      </div>
     </div>
 
     <div class="hero-right">
-      <img src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-942a7e918a3d1d7ec2241adc1e9f31f6.png"
+      <img src="https://twshnrvhfoeqdusdhxjo.supabase.co/storage/v1/object/public/midia%20homenz/foto01.png"
         alt="Dr. Thel Chateaubriand">
     </div>
 
 
   </section>
-
-  <!-- BEFORE/AFTER STRIP -->
-  <div class="ba-strip"
-    style="background-image: url('https://files.greatpages.com.br/arquivos/paginas_editor/24366-8d5ecc9fd1b275aab1175f7aa612e1f0.png');">
-    <div class="ba-strip-overlay">
-      <span class="ba-label">Antes &amp; Depois</span>
-    </div>
-  </div>
 
   <!-- ═══════════════════════════════════════════════
      DOBRA 02 — DIGITAL PRECISION
