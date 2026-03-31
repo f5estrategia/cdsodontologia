@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -164,7 +164,7 @@
     #hero {
       min-height: 80vh;
       display: grid;
-      grid-template-columns: 55% 45%;
+      grid-template-columns: 60% 40%;
       position: relative;
       overflow: hidden;
       background: #111111;
@@ -197,7 +197,7 @@
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
-      font-size: clamp(36px, 4.5vw, 64px);
+      font-size: clamp(36px, 4.5vw, 45px);
       line-height: 1.05;
       color: var(--white-pure);
       margin-bottom: 32px;
@@ -206,6 +206,14 @@
     .hero-title strong {
       font-weight: 500;
       font-style: italic;
+    }
+
+    .hero-title strong em,
+    .hero-title em strong {
+      font-family: 'Great Vibes', cursive;
+      font-weight: 400;
+      font-size: 1.25em;
+      letter-spacing: 1px;
     }
 
     .hero-sub {
@@ -234,19 +242,18 @@
 
     .hero-right {
       position: relative;
-      z-index: 2;
-      overflow: hidden;
     }
 
-    .hero-right img {
+    .hero-right>img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      object-fit: contain;
+      object-position: right bottom;
+      transform: translateX(-20%);
     }
 
-    .hero-right:hover img {
-      transform: none;
+    .hero-right:hover>img {
+      transform: translateX(-20%);
     }
 
     .hero-right::before {
@@ -333,7 +340,107 @@
       text-align: center;
     }
 
+    /* ── HERO MINI CAROUSEL OVERLAY ─────────────────── */
+    .hero-carousel-overlay {
+      position: absolute;
+      bottom: 30px;
+      left: 12%;
+      transform: translateX(-50%);
+      width: 85%;
+      max-width: 290px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-carousel-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--white-pure);
+      margin-bottom: 12px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-carousel-wrap {
+      width: 100%;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+      background: var(--black);
+    }
+
+    .hero-carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-carousel-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-carousel-slide img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-carousel-controls {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      padding: 0 8px;
+      pointer-events: none;
+    }
+
+    .hero-carousel-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white-pure);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: background 0.3s;
+    }
+
+    .hero-carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-carousel-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+    }
+
     @media (max-width: 900px) {
+      .hero-carousel-overlay {
+        left: 50%;
+        bottom: 10px;
+        max-width: 260px;
+      }
+
       .ba-inline {
         width: 100px;
       }
@@ -343,9 +450,64 @@
      DOBRA 02 — DIGITAL PRECISION
   ═══════════════════════════════════════════════════ */
     #digital {
-      background: var(--black-soft);
-      border-top: 1px solid var(--gray-line);
-      border-bottom: 1px solid var(--gray-line);
+      background: #f5f5f5;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    #digital .eyebrow {
+      color: #888888;
+    }
+
+    #digital .section-title {
+      color: #1a1a1a;
+    }
+
+    #digital .section-title em {
+      color: #555555;
+    }
+
+    #digital p {
+      color: #555555 !important;
+    }
+
+    #digital .digital-tags-row {
+      border-color: #d8d8d8;
+    }
+
+    #digital .digital-tag-item {
+      color: #666666;
+      border-color: #d8d8d8;
+    }
+
+    #digital .service-item {
+      border-color: #d8d8d8;
+    }
+
+    #digital .service-icon {
+      border-color: #cccccc;
+    }
+
+    #digital .service-icon svg {
+      stroke: #1a1a1a;
+    }
+
+    #digital .service-name {
+      color: #1a1a1a;
+    }
+
+    #digital .service-desc {
+      color: #555555;
+    }
+
+    #digital .btn {
+      border-color: #1a1a1a;
+      color: #1a1a1a;
+    }
+
+    #digital .btn:hover {
+      background: #1a1a1a;
+      color: #ffffff;
     }
 
     .digital-grid {
@@ -607,6 +769,8 @@
     .carousel-wrap {
       position: relative;
       overflow: hidden;
+      max-width: 70%;
+      margin: 0 auto;
     }
 
     .carousel-track {
@@ -1050,7 +1214,7 @@
     /* ── CONTACT CARDS ──────────────────────────────── */
     .contact-cards {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--gray-line);
       border: 1px solid var(--gray-line);
@@ -1067,7 +1231,7 @@
       text-decoration: none;
       color: inherit;
       transition: background 0.35s ease;
-      cursor: pointer;
+      cursor: default;
     }
 
     .contact-card:hover {
@@ -1229,12 +1393,17 @@
 
     /* ── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 900px) {
+      .carousel-wrap {
+        max-width: 100%;
+      }
+
       .contact-cards {
         grid-template-columns: 1fr 1fr;
       }
 
       #hero {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         min-height: auto;
       }
 
@@ -1266,16 +1435,18 @@
       }
 
       .hero-right {
+        position: relative;
         width: 100%;
         height: auto;
       }
 
-      .hero-right img {
+      .hero-right>img {
         width: 100%;
         height: auto;
         object-fit: contain;
         object-position: center top;
         display: block;
+        transform: none;
       }
 
       .hero-right::before {
@@ -1381,32 +1552,76 @@
       </div>
 
       <h1 class="hero-title reveal reveal-delay-1">
-        O poder da
-        <strong>Odontologia Digital</strong> <br>aliado aos 30 anos de experiência em implantes dentários.
+        O poder da <strong><em>Odontologia Digital</em></strong><br>
+        aliado aos <strong><em>30 anos de experiência</em></strong><br>
+        em Implantes Dentários
       </h1>
 
       <p class="hero-sub reveal reveal-delay-2">
-        Referência no Tatuapé, o Dr. Thel Chateaubriand utiliza o planejamento 3D para devolver seus dentes fixos com
-        precisão. Recupere o prazer de mastigar e a confiança de um sorriso natural e seguro.
+        Sob a condução do Dr. Thel Chateaubriand, a CDS une ciência e tecnologia para restabelecer a harmonia do seu
+        sorriso. Através de um planejamento digital minucioso, devolvemos a função mastigatória e a estética com a
+        naturalidade que a alta performance clínica exige.
       </p>
 
-      <div class="hero-tags reveal reveal-delay-2">
-        <span class="hero-tag">Planejamento 3D</span>
-        <span class="hero-tag">Precisão Milimétrica</span>
-        <span class="hero-tag">Fluxo Digital</span>
-      </div>
+
 
       <div class="hero-cta-row reveal reveal-delay-3">
         <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
           class="btn btn-filled">
-          AGENDAR MINHA CONSULTA
+          REALIZAR CONSULTA PERSONALIZADA
         </a>
       </div>
     </div>
 
     <div class="hero-right">
-      <img src="https://twshnrvhfoeqdusdhxjo.supabase.co/storage/v1/object/public/midias%20fernendas/cds/foto04.png"
+      <img src="https://twshnrvhfoeqdusdhxjo.supabase.co/storage/v1/object/public/midias%20fernendas/cds/foto07.png"
         alt="Dr. Thel Chateaubriand">
+
+      <!-- Mini Carousel Overlay -->
+      <div class="hero-carousel-overlay reveal reveal-delay-4">
+        <div class="hero-carousel-title">Casos de sucesso:</div>
+
+        <div class="hero-carousel-wrap">
+          <div class="hero-carousel-track" id="heroGalleryTrack">
+            <div class="hero-carousel-slide"><img
+                src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-9cbf8ecea9038adb32848b72a2ca3c09.jpg"
+                alt="Caso"></div>
+            <div class="hero-carousel-slide"><img
+                src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-866537beeac533342bd80bdc0b94dc0f.jpg"
+                alt="Caso"></div>
+            <div class="hero-carousel-slide"><img
+                src="https://files.greatpages.com.br/arquivos/paginas_editor/24366-ba062250880fba291c664eb7099dc5ea.jpg"
+                alt="Caso"></div>
+            <div class="hero-carousel-slide"><img
+                src="https://twshnrvhfoeqdusdhxjo.supabase.co/storage/v1/object/public/midias%20fernendas/cds/Caso%2001.jpg"
+                alt="Caso"></div>
+            <div class="hero-carousel-slide"><img
+                src="https://twshnrvhfoeqdusdhxjo.supabase.co/storage/v1/object/public/midias%20fernendas/cds/Caso%2002.jpg"
+                alt="Caso"></div>
+            <div class="hero-carousel-slide"><img
+                src="https://twshnrvhfoeqdusdhxjo.supabase.co/storage/v1/object/public/midias%20fernendas/cds/Caso%2003.jpg"
+                alt="Caso"></div>
+            <div class="hero-carousel-slide"><img
+                src="https://twshnrvhfoeqdusdhxjo.supabase.co/storage/v1/object/public/midias%20fernendas/cds/Caso%2004.jpg"
+                alt="Caso"></div>
+            <div class="hero-carousel-slide"><img
+                src="https://twshnrvhfoeqdusdhxjo.supabase.co/storage/v1/object/public/midias%20fernendas/cds/Caso%2005.jpg"
+                alt="Caso"></div>
+          </div>
+          <div class="hero-carousel-controls">
+            <button class="hero-carousel-btn" id="heroGalleryPrev" aria-label="Anterior">
+              <svg viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+            <button class="hero-carousel-btn" id="heroGalleryNext" aria-label="Próximo">
+              <svg viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
 
@@ -1433,12 +1648,15 @@
             A segurança de um sorriso <em>planejado digitalmente.</em>
           </h2>
           <p style="font-size:15px;line-height:1.8;color:var(--gray-light);" class="reveal reveal-delay-1">
-            Substitua a insegurança de próteses instáveis pela precisão do fluxo digital. Na CDS Odontologia, utilizamos
-            o planejamento guiado por computador para devolver sua mastigação e estética com total conforto.
+            Substitua a insegurança de próteses instáveis pela <strong><em>precisão do fluxo digital.</em></strong> Na
+            CDS
+            Odontologia, utilizamos o planejamento guiado por <em><strong>métodos digitais</strong> </em>para devolver
+            sua
+            mastigação e estética com total conforto.
           </p>
 
           <div class="digital-tags-row reveal reveal-delay-2">
-            <div class="digital-tag-item">Fluxo 100% Digital</div>
+            <div class="digital-tag-item">Método exclusivo</div>
             <div class="digital-tag-item">Planejamento 3D</div>
             <div class="digital-tag-item">Precisão Milimétrica</div>
           </div>
@@ -1474,7 +1692,7 @@
 
           <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
             class="btn reveal reveal-delay-3">
-            Agendar minha avaliação
+            AGENDAR CONSULTA PERSONALIZADA
           </a>
         </div>
 
@@ -1483,7 +1701,63 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
-     DOBRA 03 — TECNOLOGIA
+     DOBRA 03 — EXPERIÊNCIA
+═══════════════════════════════════════════════ -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="exp-grid">
+
+        <div>
+          <p class="eyebrow reveal">Referência em São Paulo</p>
+          <h2 class="section-title reveal reveal-delay-1">
+            Experiência que gera <em>confiança.</em>
+          </h2>
+          <p style="font-size:15px;line-height:1.8;color:var(--gray-light);" class="reveal reveal-delay-1">
+            Liderada pelo Dr. Thel Chateaubriand, nossa equipe une 30 anos de especialidade ao que existe de mais
+            avançado na Odontologia Digital. Aqui, cada etapa do seu tratamento é planejada por especialistas que são
+            referência em reabilitação oral em São Paulo.
+          </p>
+
+          <div class="exp-stat-row reveal reveal-delay-2">
+            <div class="exp-stat">
+              <div class="exp-stat-num">30+</div>
+              <div class="exp-stat-label">Anos de especialidade</div>
+            </div>
+            <div class="exp-stat">
+              <div class="exp-stat-num">100%</div>
+              <div class="exp-stat-label">Fluxo digital</div>
+            </div>
+            <div class="exp-stat">
+              <div class="exp-stat-num">SP</div>
+              <div class="exp-stat-label">Referência em reabilitação</div>
+            </div>
+            <div class="exp-stat">
+              <div class="exp-stat-num">3D</div>
+              <div class="exp-stat-label">Planejamento guiado</div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
+            class="btn reveal reveal-delay-3">
+            AGENDAR CONSULTA INICIAL
+          </a>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/oYZVTGt3m8M?autoplay=0&controls=1&rel=0&modestbranding=1"
+              title="Dr. Thel Chateaubriand"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+     DOBRA 04 — TECNOLOGIA
 ═══════════════════════════════════════════════ -->
   <section id="tech" class="section">
     <div class="container">
@@ -1568,7 +1842,7 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
-     DOBRA 04 — GALERIA
+     DOBRA 05 — GALERIA
 ═══════════════════════════════════════════════ -->
   <section id="gallery" class="section">
     <div class="container">
@@ -1581,8 +1855,8 @@
         </div>
         <div>
           <p style="font-size:15px;line-height:1.8;color:var(--gray-light);" class="reveal">
-            Resultados clínicos de pacientes que recuperaram a liberdade e a autoestima através do planejamento digital
-            exclusivo da CDS.
+            Resultados clínicos de pacientes que recuperaram a liberdade e a autoestima através do método exclusivo da
+            CDS.
           </p>
         </div>
       </div>
@@ -1659,67 +1933,13 @@
       <div style="text-align:center;margin-top:60px;" class="reveal">
         <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
           class="btn">
-          Agendar minha avaliação
+          AGENDAR MINHA CONSULTA
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-     DOBRA 05 — EXPERIÊNCIA
-═══════════════════════════════════════════════ -->
-  <section id="experience" class="section">
-    <div class="container">
-      <div class="exp-grid">
 
-        <div>
-          <p class="eyebrow reveal">Referência em São Paulo</p>
-          <h2 class="section-title reveal reveal-delay-1">
-            Experiência que gera <em>confiança.</em>
-          </h2>
-          <p style="font-size:15px;line-height:1.8;color:var(--gray-light);" class="reveal reveal-delay-1">
-            Liderada pelo Dr. Thel Chateaubriand, nossa equipe une 30 anos de especialidade ao que existe de mais
-            avançado na Odontologia Digital. Aqui, cada etapa do seu tratamento é planejada por especialistas que são
-            referência em reabilitação oral em São Paulo.
-          </p>
-
-          <div class="exp-stat-row reveal reveal-delay-2">
-            <div class="exp-stat">
-              <div class="exp-stat-num">30+</div>
-              <div class="exp-stat-label">Anos de especialidade</div>
-            </div>
-            <div class="exp-stat">
-              <div class="exp-stat-num">100%</div>
-              <div class="exp-stat-label">Fluxo digital</div>
-            </div>
-            <div class="exp-stat">
-              <div class="exp-stat-num">SP</div>
-              <div class="exp-stat-label">Referência em reabilitação</div>
-            </div>
-            <div class="exp-stat">
-              <div class="exp-stat-num">3D</div>
-              <div class="exp-stat-label">Planejamento guiado</div>
-            </div>
-          </div>
-
-          <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
-            class="btn reveal reveal-delay-3">
-            Agendar minha avaliação
-          </a>
-        </div>
-
-        <div class="reveal reveal-delay-1">
-          <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/oYZVTGt3m8M?autoplay=0&controls=1&rel=0&modestbranding=1"
-              title="Dr. Thel Chateaubriand"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy"></iframe>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════════════════════════════════════════════
      DOBRA 06 — DEPOIMENTOS
@@ -1936,7 +2156,7 @@
       <!-- CONTATO: grid de cards centralizado -->
       <div class="contact-cards reveal">
 
-        <a href="https://maps.google.com/?q=Rua+Itapura+903+Tatuapé+São+Paulo" target="_blank" class="contact-card">
+        <div class="contact-card">
           <div class="contact-card-icon">
             <svg viewBox="0 0 24 24" stroke-width="1.2" fill="none">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -1946,20 +2166,9 @@
           </div>
           <div class="contact-card-label">Endereço</div>
           <div class="contact-card-value">Rua Itapura, 903<br>Tatuapé, São Paulo — SP</div>
-        </a>
+        </div>
 
-        <a href="https://wa.me/5511978101727" target="_blank" class="contact-card">
-          <div class="contact-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-            </svg>
-          </div>
-          <div class="contact-card-label">WhatsApp</div>
-          <div class="contact-card-value">(11) 97810-1727</div>
-        </a>
-
-        <a href="https://instagram.com/cds.odontodigital" target="_blank" class="contact-card">
+        <div class="contact-card">
           <div class="contact-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
               <rect x="2" y="2" width="20" height="20" rx="5" stroke-linecap="round" />
@@ -1969,7 +2178,7 @@
           </div>
           <div class="contact-card-label">Instagram</div>
           <div class="contact-card-value">@cds.odontodigital</div>
-        </a>
+        </div>
 
         <div class="contact-card contact-card--hours">
           <div class="contact-card-icon">
@@ -1993,7 +2202,7 @@
       <div class="contact-cta reveal reveal-delay-1">
         <a href="https://wa.me/5511978101727?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação." target="_blank"
           class="btn btn-filled">
-          Agendar minha avaliação
+          AGENDAR CONSULTA
         </a>
       </div>
 
@@ -2087,6 +2296,25 @@
       document.getElementById('reviewsNext').addEventListener('click', () => goTo(current + 1));
 
       setInterval(() => goTo(current + 1), 7000);
+    })();
+
+    // ── HERO MINI CAROUSEL ─────────────────────────
+    (function () {
+      const track = document.getElementById('heroGalleryTrack');
+      if (!track) return;
+      const slides = track.querySelectorAll('.hero-carousel-slide');
+      let current = 0;
+      const total = slides.length;
+
+      function goTo(n) {
+        current = (n + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+      }
+
+      document.getElementById('heroGalleryPrev').addEventListener('click', () => goTo(current - 1));
+      document.getElementById('heroGalleryNext').addEventListener('click', () => goTo(current + 1));
+
+      setInterval(() => goTo(current + 1), 4000);
     })();
   </script>
 </body>
